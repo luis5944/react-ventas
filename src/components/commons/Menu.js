@@ -1,24 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   return (
     <nav className="panel is-dark ">
       <p className="panel-heading has-text-centered">Menú</p>
       <div className="panel-block">
-        <a href="/" className="button is-fullwidth">
+        <Link to="/" className="button is-fullwidth">
           <span className="icon">
             <i className="fas fa-home"></i>
           </span>
           <span>Inicio</span>
-        </a>
+        </Link>
       </div>
       <div className="panel-block">
-        <a href="/" className="button is-fullwidth">
+        <Link to="/clientes" className="button is-fullwidth">
           <span className="icon">
             <i className="fas fa-users"></i>
           </span>
           <span>Clientes</span>
-        </a>
+        </Link>
       </div>
     </nav>
   );
