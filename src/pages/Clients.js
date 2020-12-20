@@ -1,6 +1,8 @@
 import React from "react";
 import TableClient from "../components/clients/TableClient";
+import { ToolbarClient } from "../components/clients/ToolbarClient";
 import Layout from "../components/commons/Layout";
+import Modal from "../components/commons/Modal";
 
 const Clients = () => {
   return (
@@ -8,17 +10,11 @@ const Clients = () => {
       <div className="panel">
         <div className="panel-heading">Clientes</div>
         <div className="box">
-          <div className="container has-text-centered">
-            <button className="button is-small is-warning">
-              <span className="icon is-small">
-                <i className="fas fa-user-plus"></i>
-              </span>
-              <span>Nuevo Cliente</span>
-            </button>
-          </div>
+          <ToolbarClient />
           <TableClient />
         </div>
       </div>
+      <Modal  />
     </Layout>
   );
 };
