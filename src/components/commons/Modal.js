@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
+
 import { ModalContext } from "../../context/ModalContext";
 
 const Modal = (props) => {
   const { showModal, setShowModal, modalTitle, setModalTitle } = useContext(
     ModalContext
   );
+
 
   const cerrarModal = () => {
     setShowModal(false);
@@ -23,13 +25,7 @@ const Modal = (props) => {
             onClick={cerrarModal}
           ></button>
         </header>
-        <section className="modal-card-body">Contenido</section>
-        <footer className="modal-card-foot">
-          <button className="button is-success">Guardar Cambios</button>
-          <button className="button" onClick={cerrarModal}>
-            Cancelar
-          </button>
-        </footer>
+        <section className="modal-card-body">{props.children}</section>
       </div>
     </div>
   );

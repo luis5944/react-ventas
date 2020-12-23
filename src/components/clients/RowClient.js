@@ -1,24 +1,20 @@
 import React, { useContext } from "react";
-import { ClientsContext } from "../../context/ClientsContext";
+import { ClienteContext } from "../../context/clientContext";
+
 import { ModalContext } from "../../context/ModalContext";
 
 const RowClient = ({ cliente }) => {
-  const { clientesList, setClientesList } = useContext(ClientsContext);
+  const { setShowModal, setModalTitle } = useContext(ModalContext);
+  const { obtenerCliente, eliminarCliente } = useContext(ClienteContext);
 
-  const handleDelete = async () => {
-    await fetch(`http://localhost:9090/api/clientes/${cliente.idCliente}`, {
-      method: "DELETE",
-    });
-    setClientesList(
-      clientesList.filter((c) => c.idCliente !== cliente.idCliente)
-    );
+  const handleDelete = () => {
+    eliminarCliente(cliente.idCliente);
   };
 
-  const { setShowModal, setModalTitle } = useContext(ModalContext);
-
   const openModalUpdateClient = () => {
-    setShowModal(true);
+    obtenerCliente(cliente);
     setModalTitle("Actualizar Cliente");
+    setShowModal(true);
   };
 
   return (

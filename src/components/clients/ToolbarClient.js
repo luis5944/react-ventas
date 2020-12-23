@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
+import { ClienteContext } from "../../context/clientContext";
 import { ModalContext } from "../../context/ModalContext";
 
 export const ToolbarClient = () => {
   const { setShowModal, setModalTitle } = useContext(ModalContext);
+  const { obtenerCliente } = useContext(ClienteContext);
 
   const openModal = () => {
     setShowModal(true);
     setModalTitle("Agregar Cliente");
+    obtenerCliente(null);
   };
+
   return (
     <div className="container has-text-centered">
       <button className="button is-small is-warning" onClick={openModal}>

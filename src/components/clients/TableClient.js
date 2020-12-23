@@ -1,21 +1,20 @@
 import React, { useContext, useEffect } from "react";
-import { ClientsContext } from "../../context/ClientsContext";
+
+import { ClienteContext } from "../../context/clientContext";
 
 import RowClient from "./RowClient";
 
 const TableClient = () => {
-  const {clientesList, setClientesList} = useContext(ClientsContext);
+  const { clientsList, obtenerClientes } = useContext(ClienteContext);
 
   useEffect(() => {
-    const API = async () => {
-      const resp = await fetch("http://localhost:9090/api/clientes");
-      const data = await resp.json();
-      setClientesList(data);
-    };
-    API();
-  }, [setClientesList]);
+    obtenerClientes();
+    // eslint-disable-next-line
+  }, []);
 
-
+  if (clientsList.length === 0) {
+    return <p className="has-text-centered py-2">No existe clientes.</p>;
+  }
 
   return (
     <div className="table-container">
@@ -31,12 +30,11 @@ const TableClient = () => {
           </tr>
         </thead>
         <tbody>
-          {clientesList.map((cliente) => (
-            <RowClient cliente={cliente} key={cliente.idCliente}/>
+          {clientsList.map((cliente) => (
+            <RowClient cliente={cliente} key={cliente.idCliente} />
           ))}
         </tbody>
       </table>
-      
     </div>
   );
 };
