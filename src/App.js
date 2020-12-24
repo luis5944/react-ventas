@@ -8,7 +8,7 @@ import { ModalProvider } from "./context/ModalContext";
 import axios from "axios";
 
 axios.interceptors.request.use(function (config) {
-  config.url = `${process.env.REACT_APP_API_BASE_URL}${config.url}`;
+  config.url = `https://crud-spring-react.herokuapp.com/api${config.url}`;
   return config;
 });
 
